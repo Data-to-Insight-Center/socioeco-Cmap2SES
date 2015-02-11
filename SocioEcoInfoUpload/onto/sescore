@@ -1,0 +1,327 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY skos "http://www.w3.org/2004/02/skos/core#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://localhost:8080/sesonto/sescore#"
+     xml:base="http://localhost:8080/sesonto/sescore"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#">
+    <owl:Ontology rdf:about="http://localhost:8080/sesonto/sescore">
+        <owl:imports rdf:resource="http://www.w3.org/2004/02/skos/core"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#sameAs -->
+
+    <owl:AnnotationProperty rdf:about="&owl;sameAs"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://localhost:8080/sesonto/sescore#about -->
+
+    <owl:ObjectProperty rdf:about="http://localhost:8080/sesonto/sescore#about"/>
+    
+
+
+    <!-- http://localhost:8080/sesonto/sescore#described_by -->
+
+    <owl:ObjectProperty rdf:about="http://localhost:8080/sesonto/sescore#described_by"/>
+    
+
+
+    <!-- http://localhost:8080/sesonto/sescore#describes -->
+
+    <owl:ObjectProperty rdf:about="http://localhost:8080/sesonto/sescore#describes"/>
+    
+
+
+    <!-- http://localhost:8080/sesonto/sescore#has_concept -->
+
+    <owl:ObjectProperty rdf:about="http://localhost:8080/sesonto/sescore#has_concept"/>
+    
+
+
+    <!-- http://localhost:8080/sesonto/sescore#published_in -->
+
+    <owl:ObjectProperty rdf:about="http://localhost:8080/sesonto/sescore#published_in"/>
+    
+
+
+    <!-- http://localhost:8080/sesonto/sescore#refers_to_concept -->
+
+    <owl:ObjectProperty rdf:about="http://localhost:8080/sesonto/sescore#refers_to_concept">
+        <rdfs:comment>This is used for Local Concept. For example, for Local Concept X, we specify it refers to Concept Y</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://localhost:8080/sesonto/sescore#version -->
+
+    <owl:DatatypeProperty rdf:about="http://localhost:8080/sesonto/sescore#version"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://localhost:8080/sesonto/sescore#Concept -->
+
+    <owl:Class rdf:about="http://localhost:8080/sesonto/sescore#Concept">
+        <owl:equivalentClass rdf:resource="&skos;Concept"/>
+        <owl:sameAs>http://www.w3.org/2004/02/skos/core#Concept</owl:sameAs>
+        <owl:sameAs>http://socialecologicalsystems.referata.com/Category-3AConcept</owl:sameAs>
+    </owl:Class>
+    
+
+
+    <!-- http://localhost:8080/sesonto/sescore#ConceptGraph -->
+
+    <owl:Class rdf:about="http://localhost:8080/sesonto/sescore#ConceptGraph">
+        <rdfs:subClassOf rdf:resource="&skos;ConceptScheme"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&skos;member"/>
+                <owl:someValuesFrom rdf:resource="http://localhost:8080/sesonto/sescore#Concept"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://localhost:8080/sesonto/sescore#DataSet -->
+
+    <owl:Class rdf:about="http://localhost:8080/sesonto/sescore#DataSet">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://localhost:8080/sesonto/sescore#describes"/>
+                <owl:someValuesFrom rdf:resource="http://localhost:8080/sesonto/sescore#Concept"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://localhost:8080/sesonto/sescore#Database -->
+
+    <owl:Class rdf:about="http://localhost:8080/sesonto/sescore#Database">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/sesonto/sescore#DataSet"/>
+    </owl:Class>
+    
+
+
+    <!-- http://localhost:8080/sesonto/sescore#FileCollection -->
+
+    <owl:Class rdf:about="http://localhost:8080/sesonto/sescore#FileCollection">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/sesonto/sescore#DataSet"/>
+    </owl:Class>
+    
+
+
+    <!-- http://localhost:8080/sesonto/sescore#Framework -->
+
+    <owl:Class rdf:about="http://localhost:8080/sesonto/sescore#Framework">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://localhost:8080/sesonto/sescore#version"/>
+                <owl:someValuesFrom rdf:resource="&rdf;PlainLiteral"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://localhost:8080/sesonto/sescore#published_in"/>
+                <owl:someValuesFrom rdf:resource="http://localhost:8080/sesonto/sescore#Publication"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://localhost:8080/sesonto/sescore#described_by"/>
+                <owl:someValuesFrom rdf:resource="http://localhost:8080/sesonto/sescore#ConceptGraph"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>&quot;Framework&quot; is defined in SES framework paper v6. SES framework is an instance of Framework.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://localhost:8080/sesonto/sescore#Instrument -->
+
+    <owl:Class rdf:about="http://localhost:8080/sesonto/sescore#Instrument"/>
+    
+
+
+    <!-- http://localhost:8080/sesonto/sescore#LocalConcept -->
+
+    <owl:Class rdf:about="http://localhost:8080/sesonto/sescore#LocalConcept">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/sesonto/sescore#Concept"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&skos;inScheme"/>
+                <owl:someValuesFrom rdf:resource="http://localhost:8080/sesonto/sescore#Framework"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://localhost:8080/sesonto/sescore#refers_to_concept"/>
+                <owl:someValuesFrom rdf:resource="http://localhost:8080/sesonto/sescore#Concept"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&skos;semanticRelation"/>
+                <owl:someValuesFrom rdf:resource="&skos;Concept"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>This is concept that is local in a specific framework. For example, &quot;governance system&quot; is a concept, and there is a Local Concept called &quot;governance system&quot; in the Ostrom2009 version of SES framework.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://localhost:8080/sesonto/sescore#Paper -->
+
+    <owl:Class rdf:about="http://localhost:8080/sesonto/sescore#Paper">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/sesonto/sescore#Publication"/>
+    </owl:Class>
+    
+
+
+    <!-- http://localhost:8080/sesonto/sescore#PlainFile -->
+
+    <owl:Class rdf:about="http://localhost:8080/sesonto/sescore#PlainFile">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/sesonto/sescore#DataSet"/>
+    </owl:Class>
+    
+
+
+    <!-- http://localhost:8080/sesonto/sescore#Publication -->
+
+    <owl:Class rdf:about="http://localhost:8080/sesonto/sescore#Publication"/>
+    
+
+
+    <!-- http://localhost:8080/sesonto/sescore#Questionnaire -->
+
+    <owl:Class rdf:about="http://localhost:8080/sesonto/sescore#Questionnaire">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/sesonto/sescore#Instrument"/>
+    </owl:Class>
+    
+
+
+    <!-- http://localhost:8080/sesonto/sescore#SES_study -->
+
+    <owl:Class rdf:about="http://localhost:8080/sesonto/sescore#SES_study">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/sesonto/sescore#Study"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://localhost:8080/sesonto/sescore#about"/>
+                <owl:someValuesFrom rdf:resource="http://localhost:8080/sesonto/sescore#Social_Ecological_System"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://localhost:8080/sesonto/sescore#SemanticWiki -->
+
+    <owl:Class rdf:about="http://localhost:8080/sesonto/sescore#SemanticWiki">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/sesonto/sescore#DataSet"/>
+    </owl:Class>
+    
+
+
+    <!-- http://localhost:8080/sesonto/sescore#Social_Ecological_System -->
+
+    <owl:Class rdf:about="http://localhost:8080/sesonto/sescore#Social_Ecological_System">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://localhost:8080/sesonto/sescore#published_in"/>
+                <owl:someValuesFrom rdf:resource="http://localhost:8080/sesonto/sescore#Publication"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://localhost:8080/sesonto/sescore#Study -->
+
+    <owl:Class rdf:about="http://localhost:8080/sesonto/sescore#Study">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://localhost:8080/sesonto/sescore#described_by"/>
+                <owl:someValuesFrom rdf:resource="http://localhost:8080/sesonto/sescore#ConceptGraph"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>This can be a study or project about SES</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://localhost:8080/sesonto/sescore#Wiki -->
+
+    <owl:Class rdf:about="http://localhost:8080/sesonto/sescore#Wiki">
+        <rdfs:subClassOf rdf:resource="http://localhost:8080/sesonto/sescore#DataSet"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2004/02/skos/core#Concept -->
+
+    <rdf:Description rdf:about="&skos;Concept"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net -->
+

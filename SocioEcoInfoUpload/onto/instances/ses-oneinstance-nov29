@@ -1,0 +1,20 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:sampleinstances="http://localhost:8080/sesonto/sampleinstances#"
+    xmlns:sescore="http://localhost:8080/sesonto/sescore#" > 
+  <rdf:Description rdf:about="http://localhost:8080/sesonto/sampleinstances#CG_Ostrom2014">
+    <skos:member rdf:resource="http://localhost:8080/sesonto/sampleinstances#GovernanceSystem_Ostrom2014"/>
+    <skos:member rdf:resource="http://localhost:8080/sesonto/sampleinstances#ResourceSystem_Ostrom2014"/>
+    <rdf:type rdf:resource="http://localhost:8080/sesonto/sescore#ConceptGraph"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost:8080/sesonto/sampleinstances#GovernanceSystem_Ostrom2014">
+    <skos:broaderTransitive rdf:resource="http://localhost:8080/sesonto/sampleinstances#GS1_Ostrom2014"/>
+    <rdf:type rdf:resource="http://localhost:8080/sesonto/sescore#Concept"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://localhost:8080/sesonto/sampleinstances#ResourceSystem_Ostrom2014">
+    <sescore:refers_to_concept rdf:resource="http://localhost:8080/sesonto/sampleinstances#ResourceSystem"/>
+    <skos:broaderTransitive rdf:resource="http://localhost:8080/sesonto/sampleinstances#SizeOfResourceSystem_Ostrom2014"/>
+    <rdf:type rdf:resource="http://localhost:8080/sesonto/sescore#Concept"/>
+  </rdf:Description>
+</rdf:RDF>

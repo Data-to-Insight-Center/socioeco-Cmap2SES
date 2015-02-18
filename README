@@ -1,3 +1,10 @@
 This is a socio-eco-info project product.
 
-test line to see if the imported General Project in Eclipse works
+You need to first use the Cmap COE tool for drawing graphs, which can then be converted to an ontology file (OWL) in Cmap COE
+Cmap COE can be downloaded at http://cmapdownload.ihmc.us/coe/Web_InstallersV5.0/install.htm
+Manual available at http://www.ihmc.us/sandbox/groups/coe/wiki/welcome/attachments/d2a1b/COEmanual06.pdf?sessionID=bdf468bcd250a687fdfe1de90929f86fd4469534
+ 
+Install http://www.ihmc.us/sandbox/groups/coe/wiki/welcome/attachments/d2a1b/COEmanual06.pdf?sessionID=bdf468bcd250a687fdfe1de90929f86fd4469534
+
+The service is a servlet running under Apache Tomcat 7. In your development environment, you need to have an Apache Tomcat 7 running.
+

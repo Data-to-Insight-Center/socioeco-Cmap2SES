@@ -14,6 +14,7 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import utils.Configuration;
 import cmap.CmapConverter;
 import cmap.ModelReader;
 
@@ -21,7 +22,7 @@ import com.hp.hpl.jena.rdf.model.Model;
 
 /**
  * Servlet to handle File upload request from Client
- * @author Javin Paul
+ * Code adopted from @author Javin Paul
  */
 
 //Read more: http://javarevisited.blogspot.com/2013/07/ile-upload-example-in-servlet-and-jsp-java-web-tutorial-example.html#ixzz3KqfMFZi8
@@ -30,8 +31,10 @@ import com.hp.hpl.jena.rdf.model.Model;
 
 public class FileUploadAndValidateHandler extends HttpServlet {
 	
-	private final String UPLOAD_DIRECTORY = "/home/miao/Documents/Software/apache-tomcat-7.0.57/webapps/data/cmapraw";
-	private final String VALIDATE_DIRECTORY = "/home/miao/Documents/Software/apache-tomcat-7.0.57/webapps/data/validated";
+//	private final String UPLOAD_DIRECTORY = "/home/miao/Documents/Software/apache-tomcat-7.0.57/webapps/data/cmapraw";
+//	private final String VALIDATE_DIRECTORY = "/home/miao/Documents/Software/apache-tomcat-7.0.57/webapps/data/validated";
+	private final String UPLOAD_DIRECTORY = getUploadDirectory ("UPLOAD_DIRECTORY");
+	private final String VALIDATW_DIRECTORY = getUploadDirectory ("VALIDATE_DIRECTORY");
 	
 	@Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -67,16 +70,7 @@ public class FileUploadAndValidateHandler extends HttpServlet {
         request.getRequestDispatcher("result.jsp").forward(request, response);
      
     }
-	
-	/***
-	 * This copies the uploaded file to another folder
-	 * 
-	 * @param sourceDir
-	 * @param targetDir
-	 */
-	void copyFile (String sourceDir, String targetDir) {
-		
-	}
+
 	
 	void generateSESValidatedRDF (String cmapRDFDir, String validRDFDir) {
 		
@@ -86,6 +80,11 @@ public class FileUploadAndValidateHandler extends HttpServlet {
 		CmapConverter converter = new CmapConverter(mFromCmap);
 		converter.convertAndOutput(validRDFDir);
 		
+	}
+	
+	private static String getUploadDirectory (String key) {
+		Configuration config = new Configuration ();
+		config.getPropertyValue(key);
 	}
 	
 

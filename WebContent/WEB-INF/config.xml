@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>configuration files for the Cmap2SES tool</comment>
+<entry key="UPLOAD_DIRECTORY">/home/miao/Documents/Software/apache-tomcat-7.0.57/webapps/data/cmapraw</entry>
+<entry key="VALIDATE_DIRECTORY">/home/miao/Documents/Software/apache-tomcat-7.0.57/webapps/data/validated</entry>
+</properties>
+

@@ -20,3 +20,5 @@ Install http://www.ihmc.us/sandbox/groups/coe/wiki/welcome/attachments/d2a1b/COE
 
 The service is a servlet running under Apache Tomcat 7. In your development environment, you need to have an Apache Tomcat 7 running.
 
+Setting uploading and storing directories
+Use the WebContent/WEB-INF/config.xml to configure the directory for the uploaded OWL file and the validated file

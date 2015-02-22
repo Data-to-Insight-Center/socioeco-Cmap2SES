@@ -15,19 +15,18 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import utils.Configuration;
+
 /**
  * Servlet to handle File upload request from Client
- * @author Javin Paul
  */
 
-//Read more: http://javarevisited.blogspot.com/2013/07/ile-upload-example-in-servlet-and-jsp-java-web-tutorial-example.html#ixzz3KqfMFZi8
 
 @WebServlet("/FileUploadHandler")
 
 public class FileUploadHandler extends HttpServlet {
 	
-	private final String UPLOAD_DIRECTORY = "/home/miao/Documents/Software/apache-tomcat-7.0.57/webapps/data/cmapraw";
-//	private final String UPLOAD_DIRECTORY = "data/";
+	private final String UPLOAD_DIRECTORY = getUploadDirectory ("UPLOAD_DIRECTORY");
 	
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -60,6 +59,11 @@ public class FileUploadHandler extends HttpServlet {
         request.getRequestDispatcher("result.jsp").forward(request, response);
      
     }
+    
+    private static String getUploadDirectory (String key) {
+		Configuration config = new Configuration ();
+		return config.getPropertyValue(key);
+	}
 
 
 }

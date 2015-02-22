@@ -21,8 +21,7 @@ import cmap.ModelReader;
 import com.hp.hpl.jena.rdf.model.Model;
 
 /**
- * Servlet to handle File upload request from Client
- * Code adopted from @author Javin Paul
+ * Servlet to upload and validate OWL files exported by Cmap COE
  */
 
 //Read more: http://javarevisited.blogspot.com/2013/07/ile-upload-example-in-servlet-and-jsp-java-web-tutorial-example.html#ixzz3KqfMFZi8
@@ -31,10 +30,8 @@ import com.hp.hpl.jena.rdf.model.Model;
 
 public class FileUploadAndValidateHandler extends HttpServlet {
 	
-//	private final String UPLOAD_DIRECTORY = "/home/miao/Documents/Software/apache-tomcat-7.0.57/webapps/data/cmapraw";
-//	private final String VALIDATE_DIRECTORY = "/home/miao/Documents/Software/apache-tomcat-7.0.57/webapps/data/validated";
 	private final String UPLOAD_DIRECTORY = getUploadDirectory ("UPLOAD_DIRECTORY");
-	private final String VALIDATW_DIRECTORY = getUploadDirectory ("VALIDATE_DIRECTORY");
+	private final String VALIDATE_DIRECTORY = getUploadDirectory ("VALIDATE_DIRECTORY");
 	
 	@Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -84,7 +81,7 @@ public class FileUploadAndValidateHandler extends HttpServlet {
 	
 	private static String getUploadDirectory (String key) {
 		Configuration config = new Configuration ();
-		config.getPropertyValue(key);
+		return config.getPropertyValue(key);
 	}
 	
 

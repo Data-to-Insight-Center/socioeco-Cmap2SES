@@ -14,12 +14,15 @@ Read more: http://javarevisited.blogspot.com/2013/07/ile-upload-example-in-servl
  
     <body> 
         <div>
+            <!-- - not in use now
             <h3> Choose File to Upload in Server </h3>
             <form action="FileUploadHandler" method="post" enctype="multipart/form-data">
                 <input type="file" name="file" />
                 <input type="submit" value="Upload" />
             </form>
-            <h3> Validation, in testing</h3>
+             -->
+             
+            <h3> OWL Uploading and Validating</h3>
             <form action="FileUploadAndValidateHandler" method="post" enctype="multipart/form-data">
                 <input type="file" name="file" />
                 <input type="submit" value="Upload & Validate" />

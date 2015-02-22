@@ -4,8 +4,5 @@
 <comment>configuration files for the Cmap2SES tool</comment>
 <entry key="UPLOAD_DIRECTORY">/home/miao/Documents/Software/apache-tomcat-7.0.57/webapps/data/cmapraw</entry>
 <entry key="VALIDATE_DIRECTORY">/home/miao/Documents/Software/apache-tomcat-7.0.57/webapps/data/validated</entry>
-<entry key="url.blog.dustin">http://marxsoftware.blogspot.com/</entry>
-<entry key="url.javaworld">http://www.javaworld.com/</entry>
-<entry key="url.otn">http://www.oracle.com/technology/index.html</entry>
 </properties>
 
